@@ -5,12 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var dbConfig = require('./database/config');
 var MongoStore = require('connect-mongo')(session);
 
 var app = express();
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+var index = require('./controller/index');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,8 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
     secret: 'dyyao',
-    resave: false,
-    saveUninitialized: true,
+    resave: false, //是否重新保存session
+    saveUninitialized: true,  //保存初始化
     cookie: { secure: false },
     store: new MongoStore({
         url: 'mongodb://localhost/test-app',
@@ -38,7 +38,6 @@ app.use(session({
 
 
 app.use('/', index);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
