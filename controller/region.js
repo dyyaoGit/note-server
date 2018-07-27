@@ -3,6 +3,7 @@ const router = Router();
 const user = require('../database/user')
 const isEmail = require('validator/lib/isEmail');
 
+
 router.post("/user", (req, res) => { //注册逻辑
     let {username, email, password} = req.body;
 
