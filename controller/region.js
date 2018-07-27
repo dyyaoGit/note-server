@@ -4,9 +4,9 @@ const user = require('../database/user')
 const isEmail = require('validator/lib/isEmail');
 
 router.post("/user", (req, res) => { //注册逻辑
-    let {name, email, password} = req.body;
+    let {username, email, password} = req.body;
 
-    console.log(name, email, password)
+    console.log(username, email, password)
     user.findOne({email}).then(data => {
         if(data) {
             res.json({
@@ -16,7 +16,7 @@ router.post("/user", (req, res) => { //注册逻辑
         }
         else {
             if(isEmail(email)) {
-                user.create({name, email, password}).then((data) => {
+                user.create({username, email, password}).then((data) => {
                     res.json({
                         code: 200,
                         msg: '注册成功'

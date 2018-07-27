@@ -30,7 +30,7 @@ app.use(session({
     saveUninitialized: true,  //保存初始化
     cookie: { secure: false },
     store: new MongoStore({
-        url: 'mongodb://localhost/test-app',
+        url: 'mongodb://localhost/note',
         ttl: 14 * 24 * 60 * 60
     })
 }))
