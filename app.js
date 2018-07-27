@@ -28,7 +28,7 @@ app.use(session({
     secret: 'dyyao',
     resave: false, //是否重新保存session
     saveUninitialized: true,  //保存初始化
-    cookie: { secure: false },
+    cookie: { secure: false,expires: 1000*60*60*24*14 }, //是否是https协议
     store: new MongoStore({
         url: 'mongodb://localhost/test-app',
         ttl: 14 * 24 * 60 * 60
