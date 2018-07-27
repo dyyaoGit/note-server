@@ -19,12 +19,36 @@ router.post('/login', (req, res) => {
             })
         }
         else if (data.password == password) {
+            req.session.user = data;
+
+            console.log(data)
+
+            let userMsg = {
+                username: data.username,
+                email: data.email
+            };
+
             res.json({
                 code: 200,
+                data: userMsg,
                 msg: '登录成功'
             })
         }
 
+    })
+})
+
+router.put('/logOut', (req, res) => {
+    res.session.destroy(function (err) {
+        if(err){
+            console.log(err)
+        }
+        else {
+            res.json({
+                code: 200,
+                msg: '退出登陆成功'
+            })
+        }
     })
 })
 
