@@ -7,7 +7,11 @@ const user = new mongoose.Schema({
         type: String,
         unique: true
     },
-    password: String
+    password: String,
+    avatar: {
+        type: String,
+        default: '/images/avatar1.jpg'
+    }
 }, {versionKey: false})
 
 module.exports = mongoose.model("user", user)

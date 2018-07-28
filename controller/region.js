@@ -1,6 +1,6 @@
 const {Router} = require("express");
 const router = Router();
-const user = require('../database/user')
+const user = require('../database/model/user')
 const isEmail = require('validator/lib/isEmail');
 
 

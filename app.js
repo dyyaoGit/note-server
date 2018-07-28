@@ -8,6 +8,7 @@ var session = require('express-session');
 var dbConfig = require('./database/config');
 var MongoStore = require('connect-mongo')(session);
 
+
 var app = express();
 
 var index = require('./controller/index');
@@ -23,19 +24,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'uploads')));
+
 
 app.use(session({
+    name: 'sid',
     secret: 'dyyao',
     resave: false, //是否重新保存session
-    saveUninitialized: true,  //保存初始化
+    saveUninitialized: false,  //保存初始化
     cookie: { secure: false,expires: 1000*60*60*24*14 }, //是否是https协议
     store: new MongoStore({
         url: 'mongodb://localhost/note',
         ttl: 14 * 24 * 60 * 60
     })
 }))
-
-
 
 app.use('/', index);
 

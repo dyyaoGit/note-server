@@ -1,6 +1,6 @@
 const {Router} = require("express");
 const router = Router();
-const user = require('../database/user')
+const user = require('../database/model/user')
 
 router.post('/login', (req, res) => {
     let {email, password} = req.body;
@@ -21,11 +21,10 @@ router.post('/login', (req, res) => {
         else if (data.password == password) {
             req.session.user = data;
 
-            console.log(data)
-
             let userMsg = {
                 username: data.username,
-                email: data.email
+                email: data.email,
+                avatar: data.avatar
             };
 
             res.json({
@@ -38,18 +37,20 @@ router.post('/login', (req, res) => {
     })
 })
 
-router.put('/logOut', (req, res) => {
-    res.session.destroy(function (err) {
+router.delete('/logOut', (req, res) => {
+    req.session.destroy(function (err) {
         if(err){
             console.log(err)
         }
         else {
+            res.clearCookie('sid');
             res.json({
                 code: 200,
                 msg: '退出登陆成功'
             })
         }
     })
+
 })
 
 
