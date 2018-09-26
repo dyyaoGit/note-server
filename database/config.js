@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 mongoose.connect(
-    'mongodb://yao:yjr1923521@localhost:27017/note',
+    // 'mongodb://yao:yjr1923521@localhost:27017/note',
+    'mongodb://localhost:27017/note',
     { useNewUrlParser: true}
 );
 const db = mongoose.connection;
