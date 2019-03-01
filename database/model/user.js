@@ -12,6 +12,6 @@ const user = new mongoose.Schema({
         type: String,
         default: '/images/avatar1.jpg'
     }
-}, {versionKey: false})
+}, {versionKey: false});
 
-module.exports = mongoose.model("user", user)
+module.exports = mongoose.model("user", user);

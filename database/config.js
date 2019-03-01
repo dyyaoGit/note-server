@@ -1,4 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+
+const connectAddress = process.env.NODE_ENV == 'development' ? 'mongodb://localhost/note' : 'mongodb://dyyao:yjr1923521@116.62.145.106/note';
 mongoose.connect(
     // 'mongodb://yao:yjr1923521@localhost:27017/note',
     'mongodb://localhost:27017/note',
@@ -9,4 +11,4 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
     console.log('success');
 });
-module.exports = db
+module.exports = db;

@@ -28,8 +28,8 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 
 
 app.use(session({
-    name: 'sid',
-    secret: 'dyyao',
+    name: 'sid',  // sessionID的名字
+    secret: 'dyyao', // 签名密钥
     resave: false, //是否重新保存session
     saveUninitialized: false,  //保存初始化
     cookie: { secure: false,expires: 1000*60*60*24*14 }, //是否是https协议
