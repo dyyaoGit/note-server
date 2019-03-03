@@ -11,6 +11,12 @@ const article = require('./article')
 router.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../views/index.html'));
 })
+router.get('/demo', (req, res) => {
+    res.json({
+        text: "测试",
+        data: "测试数据"
+    })
+})
 router.use(region);
 router.use(login);
 router.use(categories);
