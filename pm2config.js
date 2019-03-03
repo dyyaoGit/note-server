@@ -3,7 +3,8 @@ module.exports = {
         name: "note-server",
         script: "npm run dev",
         env: {
-            NODE_ENV: "development"
+            NODE_ENV: "development",
+            port: 3000
         },
         env_test: {
             NODE_ENV: "test",
@@ -13,6 +14,7 @@ module.exports = {
         },
         env_production: {
             NODE_ENV: "production",
+            port: 6666
         }
     }]
 }
